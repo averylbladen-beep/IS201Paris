@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Adventure Game</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🌍 Travel Adventure Game</h1>
+</header>
+
+<nav>
+    <a href="index.html">Resume</a>
+    <a href="scratch.html">About Me</a>
+    <a href="app.html">Travel Game</a>
+</nav>
+
+<div class="container">
+
+    <section class="section">
+
+        <h2 id="title">Your Trip Begins</h2>
+
+        <p id="story">
+            You arrive at your destination. What do you want to do first?
+        </p>
+
+        <div id="choices">
+
+            <button onclick="step('explore')">Explore the city</button>
+            <button onclick="step('food')">Try local food</button>
+            <button onclick="step('relax')">Relax at hotel</button>
+            <button onclick="step('adventure')">Go on an adventure tour</button>
+
+        </div>
+
+        <h3 id="result"></h3>
+
+    </section>
+
+</div>
+
+<footer>
+    <a href="index.html">Back to Home</a>
+</footer>
+
+<script>
+
+function step(choice) {
+
+    let story = document.getElementById("story");
+    let title = document.getElementById("title");
+    let choices = document.getElementById("choices");
+    let result = document.getElementById("result");
+
+    // FIRST LEVEL CHOICES
+
+    if (choice === "explore") {
+
+        title.innerHTML = "City Explorer Route";
+        story.innerHTML = "You wander into a busy street full of shops and music. What next?";
+
+        choices.innerHTML =
+            `<button onclick="end('You found hidden street art and local markets! 🎨')">Visit markets</button>
+             <button onclick="end('You discovered a beautiful historic landmark! 🏛️')">Visit landmarks</button>
+             <button onclick="end('You got lost but found a cute café! ☕')">Get lost exploring</button>`;
+    }
+
+    else if (choice === "food") {
+
+        title.innerHTML = "Food Lover Route";
+        story.innerHTML = "You smell amazing food everywhere. What do you try first?";
+
+        choices.innerHTML =
+            `<button onclick="end('You tried a famous local dish and loved it! 🍜')">Local dish</button>
+             <button onclick="end('You joined a cooking class and learned a recipe! 👩‍🍳')">Cooking class</button>
+             <button onclick="end('You explored street food stalls all night! 🌮')">Street food tour</button>`;
+    }
+
+    else if (choice === "relax") {
+
+        title.innerHTML = "Relaxation Route";
+        story.innerHTML = "You’re finally resting. What kind of relaxation do you choose?";
+
+        choices.innerHTML =
+            `<button onclick="end('You spent the day at a luxury spa! 💆‍♀️')">Spa day</button>
+             <button onclick="end('You relaxed by the beach with a sunset view! 🌅')">Beach day</button>
+             <button onclick="end('You stayed in and watched movies all day! 🎬')">Hotel chill day</button>`;
+    }
+
+    else if (choice === "adventure") {
+
+        title.innerHTML = "Adventure Route";
+        story.innerHTML = "You’re ready for excitement. What adventure do you pick?";
+
+        choices.innerHTML =
+            `<button onclick="end('You went hiking and saw an incredible view! 🏔️')">Hiking</button>
+             <button onclick="end('You went ziplining through the jungle! 🌿')">Ziplining</button>
+             <button onclick="end('You went scuba diving and saw marine life! 🐠')">Scuba diving</button>`;
+    }
+
+}
+
+// FINAL END SCREEN
+
+function end(message) {
+
+    document.getElementById("title").innerHTML = "Your Travel Story Ends ✈️";
+    document.getElementById("story").innerHTML = message;
+
+    document.getElementById("choices").innerHTML =
+        `<button onclick="location.reload()">Play Again</button>`;
+
+    document.getElementById("result").innerHTML =
+        "Thanks for playing!";
+}
+
+</script>
+
+</body>
+</html>
